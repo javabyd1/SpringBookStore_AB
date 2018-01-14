@@ -1,8 +1,11 @@
 package com.sda.springstarter.demo;
 
+import com.sda.springstarter.demo.model.Author;
 import com.sda.springstarter.demo.model.Book;
 import com.sda.springstarter.demo.model.Opinions;
 import com.sda.springstarter.demo.model.Shops;
+import com.sda.springstarter.demo.repository.AuthorRepository;
+import com.sda.springstarter.demo.service.AuthorServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import com.sda.springstarter.demo.service.OpinionsServiceImpl;
 import com.sda.springstarter.demo.service.ShopsServiceImpl;
@@ -20,6 +23,9 @@ public class DemoApplication implements CommandLineRunner{
 	private OpinionsServiceImpl opinionsService;
 	@Autowired
 	private ShopsServiceImpl shopsService;
+	@Autowired
+	private AuthorRepository authorRepository;
+
 
 	public static void main(String[] args) {
 
@@ -46,6 +52,13 @@ public class DemoApplication implements CommandLineRunner{
 
 		opinionsService.saveOpinions(opinions1);
 		opinionsService.saveOpinions(opinions2);
+
+		Author author = authorRepository.findById(1);
+
+		Book book = new Book();
+		book.setTitle("Java");
+		book.setAuthor("XYZ");
+		bookService.saveBook(book);
 
 	}
 
