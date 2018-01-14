@@ -3,6 +3,8 @@ package com.sda.springstarter.demo.controler;
 import com.sda.springstarter.demo.model.Book;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,10 +28,11 @@ public class BookRestControler {
     }
 
     @GetMapping(value = "{id}")
-    public  Book getBookById(@PathVariable int id) {
-        return bookService.getBookById(id);
+    public ResponseEntity <Book> getBookById(@PathVariable int id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(bookService.getBookById(id));
     }
-
 
 
 }
