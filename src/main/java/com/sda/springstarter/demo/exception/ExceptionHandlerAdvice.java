@@ -15,5 +15,12 @@ public class ExceptionHandlerAdvice {
                 .body(new ApiError(HttpStatus.NOT_FOUND,
                         "Nie znaleziono rekordu", "Blad"));
     }
+    @ExceptionHandler(AuthorNotFoundException.class)
+    public ResponseEntity handlerException (AuthorNotFoundException e) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(new ApiError(HttpStatus.NOT_FOUND,
+                        "Nie znaleziono autora", "Zla Nazwa"));
+    }
 
 }

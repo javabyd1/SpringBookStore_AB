@@ -1,6 +1,8 @@
 package com.sda.springstarter.demo.controler;
 
+import com.sda.springstarter.demo.model.Author;
 import com.sda.springstarter.demo.model.Book;
+import com.sda.springstarter.demo.service.AuthorServiceImpl;
 import com.sda.springstarter.demo.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,16 +15,18 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookRestControler {
 
+
+    //Book
     @Autowired
     private BookServiceImpl bookService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value ="book", method = RequestMethod.GET)
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
 
-    @RequestMapping( method = RequestMethod.POST)
+    @RequestMapping(value = "book",method = RequestMethod.POST)
     public void saveBook(@RequestBody Book book) {
         bookService.saveBook(book);
     }
@@ -32,6 +36,25 @@ public class BookRestControler {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(bookService.getBookById(id));
+    }
+    //Authors
+
+    @Autowired
+    private AuthorServiceImpl authorService;
+
+    @RequestMapping(value = "author", method = RequestMethod.GET)
+    public List<Author> getAllAuthors() {
+        return authorService.getAllAuthor();
+    }
+    @RequestMapping(value = "author", method = RequestMethod.POST)
+    public void saveAuthor(@RequestBody Author author) {
+        authorService.saveAuthor(author);
+    }
+    @GetMapping(value= "author/{name}")
+    public ResponseEntity<Author> getAuthorByTitle(@PathVariable String name) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(authorService.getAuthorByTitle(name));
     }
 
 
