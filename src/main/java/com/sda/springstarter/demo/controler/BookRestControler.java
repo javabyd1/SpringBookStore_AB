@@ -20,12 +20,13 @@ public class BookRestControler {
     @Autowired
     private BookServiceImpl bookService;
 
+    @CrossOrigin(value = "http://localhost:9999")
     @RequestMapping(value ="book", method = RequestMethod.GET)
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-
+    @CrossOrigin(value = "http://localhost:9999")
     @RequestMapping(value = "book",method = RequestMethod.POST)
     public void saveBook(@RequestBody Book book) {
         bookService.saveBook(book);
