@@ -1,6 +1,8 @@
 package com.sda.springstarter.demo.model;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ public class Publisher {
     private int id;
     private String name;
     private String address;
+
 
     @OneToMany(mappedBy = "publisher")
     private Set<Book> book;
@@ -46,6 +49,7 @@ public class Publisher {
     public String getAddress() {
         return address;
     }
+
 
     public void setAddress(String address) {
         this.address = address;

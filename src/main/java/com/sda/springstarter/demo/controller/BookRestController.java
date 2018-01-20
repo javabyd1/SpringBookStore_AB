@@ -1,4 +1,4 @@
-package com.sda.springstarter.demo.controler;
+package com.sda.springstarter.demo.controller;
 
 import com.sda.springstarter.demo.model.Author;
 import com.sda.springstarter.demo.model.Book;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-public class BookRestControler {
+public class BookRestController {
 
 
     //Book

@@ -55,10 +55,10 @@ public class DemoApplication implements CommandLineRunner{
 
 		Author author = authorRepository.findById(1);
 
-		Book book = new Book();
-		book.setTitle("Java");
-		book.setAuthor("XYZ");
-		bookService.saveBook(book);
+//		Book book = new Book();
+//		book.setTitle("Java");
+//		book.setAuthor("XYZ");
+//		bookService.saveBook(book);
 
 	}
 

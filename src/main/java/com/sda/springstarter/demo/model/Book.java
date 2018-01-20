@@ -14,14 +14,14 @@ public class Book {
     private String author;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_publisher_id")
     private Publisher publisher;
 
     @ManyToOne
     private BookCategory bookCategory;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private Author bookAuthor;
 
     public Book() {
@@ -79,4 +79,5 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }
